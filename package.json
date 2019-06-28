@@ -1,35 +1,35 @@
 {
-  "name": "mytube",
-  "version": "1.0.0",
-  "description": "Youtube clone",
-  "main": "index.js",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "cookie-parser": "^1.4.4",
-    "express": "^4.17.1",
-    "helmet": "^3.18.0",
-    "morgan": "^1.9.1",
-    "pub": "^0.2.0"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/node": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "nodemon": "^1.19.1"
-  },
-  "scripts": {
-    "start": "nodemon --exec babel-node index.js --delay 3",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tvvinkle/mytube.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tvvinkle/mytube/issues"
-  },
-  "homepage": "https://github.com/tvvinkle/mytube#readme"
+    "name": "mytube",
+    "version": "1.0.0",
+    "description": "Youtube clone",
+    "main": "index.js",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "cookie-parser": "^1.4.4",
+        "express": "^4.17.1",
+        "helmet": "^3.18.0",
+        "morgan": "^1.9.1",
+        "pub": "^0.2.0"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.4.4",
+        "@babel/core": "^7.4.5",
+        "@babel/node": "^7.4.5",
+        "@babel/preset-env": "^7.4.5",
+        "nodemon": "^1.19.1"
+    },
+    "scripts": {
+        "start": "nodemon --exec babel-node init.js --delay 3",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tvvinkle/mytube.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/tvvinkle/mytube/issues"
+    },
+    "homepage": "https://github.com/tvvinkle/mytube#readme"
 }
