@@ -10,5 +10,8 @@ export const login = (req, res) =>
 export const logout = (req, res) =>
     res.render("logout", { pageTitle: "Logout" });
 
-export const search = (req, res) =>
-    res.render("search", { pageTitle: "Search" });
+export const search = (req, res) => {
+    // console.log("req:", req.query);
+    const { query: { keyword: searchingBy } } = req //const searchingBy = req.query.keyword;
+    res.render("search", { pageTitle: "Search", searchingBy });
+}
