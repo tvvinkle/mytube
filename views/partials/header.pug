@@ -8,7 +8,27 @@ header.header
             input(type="text", name="keyword", placeholder="Search")     
     .header__column
         ul
-            li
-                a(href=routes.join) Join In
-            li
-                a(href=routes.login) Log In
+            if user.isAuthenticated
+                li
+                    a(href=`/videos${routes.upload}`) Upload
+                li
+                    a(href="#") Youtube App
+                li
+                    a(href="#") Messages
+                li
+                    a(href="#") Notification
+                li
+                    a(href=routes.userDetail(user.id)) Profile
+                li
+                    a(href=routes.logout) Logout                    
+            else    
+                li
+                    a(href=`/videos${routes.upload}`) Upload
+                li
+                    a(href="#") Youtube App
+                li
+                    a(href="#") Message
+                li
+                    a(href=routes.join) Join In
+                li
+                    a(href=routes.login) Log In                   

@@ -1,5 +1,16 @@
 extends layout/main
+include mixins/video
 
 block content
     .master-head
         h1 Main video
+    .main
+        each video in videos
+            +videoBlock({
+                id: video.id,
+                videoFile: video.videoFile,
+                title: video.title,
+                description: video.description,
+                views: video.views,
+                creator: video.creator.name,
+            })
