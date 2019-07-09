@@ -15,9 +15,5 @@ const handleConnection = () => {
   console.log("DB connected Successfully");
 };
 
-const handleError = () => {
-  console.log(`DB connection failed`);
-};
-
 db.once('open', handleConnection);
 db.on('error', console.error.bind(console, 'connection error:'));

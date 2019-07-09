@@ -1,5 +1,8 @@
 import routes from "./routes";
 
+import multer from "multer";
+const multerVideo = multer({ dest: "uploads/videos/" });
+
 export const localsMiddleware = (req, res, next) => {
   res.locals.routes = routes;
   res.locals.user = {
@@ -14,3 +17,5 @@ export const localsMiddleware = (req, res, next) => {
   // console.log(res.locals);
   next();
 };
+
+export const uploadVideo = multerVideo.single("videoFile"); //upload only one file
