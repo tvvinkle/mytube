@@ -12,10 +12,10 @@ import {
 
 const globalRouter = express.Router();
 
+globalRouter.get(routes.home, home);
+
 globalRouter.get(routes.join, join);
 globalRouter.post(routes.join, postJoin);
-
-globalRouter.get(routes.home, home);
 
 globalRouter.get(routes.login, login);
 globalRouter.post(routes.login, postLogin);

@@ -4,7 +4,7 @@ header.header
             i.fab.fa-youtube
             span MyTube
     .header__column
-        form(action=routes.search, method="get")   
+        form(action="/search", method="get")   
             input(type="text", name="keyword", placeholder="Search")     
     .header__column
         ul

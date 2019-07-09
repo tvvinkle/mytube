@@ -16,11 +16,21 @@ export const videoDelete = (req, res) =>
 export const upload = (req, res) =>
   res.render("uploadVideo", { pageTitle: "Upload Video" });
 
-export const postUpload = (req, res) => {
+export const postUpload = async (req, res) => {
+
   const {
-    body: { videoFile, title, description }
+    body: { title, description },
+    file: { path }
   } = req;
-  // upload and save video file with info - generate id and creator
-  console.log(req.body);
-  res.redirect(routes.videoDetail(1)); //temp
+  console.log(`path: ${path}`);
+
+  const newVideo = await Video.create({
+    fileUrl: path,
+    title,
+    description
+  });
+
+  console.log("saved", newVideo);
+  res.redirect(routes.home);
+  // res.redirect(routes.videoDetail(newVideo.id));
 };
