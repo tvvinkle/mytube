@@ -1,10 +1,11 @@
 import express from "express";
 import routes from "../routes";
 import {
-  videos,
   videoDetail,
   videoEdit,
+  postVideoEdit,
   videoDelete,
+  postVideoDelete,
   upload,
   postUpload
 } from "../controllers/videoController";
@@ -18,7 +19,11 @@ videoRouter.get(routes.upload, upload);
 videoRouter.post(routes.upload, uploadVideo, postUpload);
 
 videoRouter.get(routes.videoDetail(), videoDetail);
-videoRouter.get(routes.videoEdit, videoEdit);
-videoRouter.get(routes.videoDelete, videoDelete);
+
+videoRouter.get(routes.videoEdit(), videoEdit);
+videoRouter.post(routes.videoEdit(), postVideoEdit);
+
+videoRouter.get(routes.videoDelete(), videoDelete);
+videoRouter.post(routes.videoDelete(), postVideoDelete);
 
 export default videoRouter;

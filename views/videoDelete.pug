@@ -1,4 +1,11 @@
 extends layout/main
 
 block content
-    p Video Delete
+    h3 Delete Video
+    p=theVideo.title
+    div.form-container
+        form(action=routes.videoEdit(theVideo.id), method="post")
+            input(name="title", type="text", placeholder="Title", value=theVideo.title)
+            input(name="description", type="text", placeholder="Description", value=theVideo.description) 
+            input(type="submit", value="Delete Video")
+    a.form-container__link(href=routes.videoEdit(theVideo.id)) Cancle
