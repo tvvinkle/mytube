@@ -1,11 +1,11 @@
 extends layout/main
 
 block content
-    p Edit Video
+    h3 Edit Video
+    p=theVideo.title
     div.form-container
-        label(for="video") video
-            input(type="file", id="video", name="video")
-            input(type="text", placeholder="Title", name="Title")
-            input(type="text", name="description" placeholder="description")
+        form(action=routes.videoEdit(theVideo.id), method="post")
+            input(name="title", type="text", placeholder="Title", value=theVideo.title)
+            input(name="description", type="text", placeholder="Description", value=theVideo.description) 
             input(type="submit", value="Update Video")
-    a.form-container__link(href=`/videos/${routes.delete}/delete`) Delete Video   
+    a.form-container__link(href=routes.videoDelete(theVideo.id)) Delete Video   

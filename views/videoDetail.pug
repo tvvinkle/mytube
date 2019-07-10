@@ -1,4 +1,12 @@
 extends layout/main
+//- include mixins/video
 
 block content
     p Video Detail
+    .video__player  
+        video(src=`/${theVideo.fileUrl}`)
+    .video__info
+        a(href=routes.videoEdit(theVideo.id)) Edit Video
+        h4.videoBlock__title=theVideo.title
+        p.videoBlock__description=theVideo.description
+        h5.videoBlock__view=theVideo.views 
