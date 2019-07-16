@@ -1,0 +1,13 @@
+extends layout/main
+
+block content
+    p Join
+    div.form-container
+        form(action=routes.join, method="post")
+            input(name="name", type="text", placeholder="Full Name", require=true)
+            input(name="email", type="email", placeholder="Email", require=true)
+            input(name="password", type="password", placeholder="Password", require=true)
+            input(name="password2", type="password", placeholder="Confrim Password", require=true)
+            input(type="submit", value="Join In")
+
+    include partials/snslogin.pug

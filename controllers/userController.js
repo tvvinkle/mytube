@@ -1,4 +1,11 @@
-export const users = (req, res) => res.send("users");
-export const userDetail = (req, res) => res.send("userDetail");
-export const editProfile = (req, res) => res.send("editProfile");
-export const changePW = (req, res) => res.send("changePW");
+export const users = (req, res) =>
+    res.render("users", { pageTitle: "Users" });
+
+export const userDetail = (req, res) =>
+    res.render("userDetail", { pageTitle: "User Detail" });
+
+export const editProfile = (req, res) =>
+    res.render("editProfile", { pageTitle: "Edit Profile" });
+
+export const changePW = (req, res) =>
+    res.render("changePassword", { pageTitle: "Password Change" });

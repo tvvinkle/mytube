@@ -2,15 +2,21 @@ extends layout/main
 include mixins/video
 
 block content
-    .master-head
-        h1 Main video
-    .main
+    .search__header
+        h3 Searching for #{searchingBy}
+    .search__videos 
+        if videos.length == 0
+            h5 no video found
         each video in videos
             +videoBlock({
-                id: video.id,
-                videoFile:video.fileUrl,
+                videoFile: video.videoFile,
                 title: video.title,
                 description: video.description,
                 views: video.views,
-                creator: video.creator,
+                id:video.id
             })
+
+    p search
+
+
+    
