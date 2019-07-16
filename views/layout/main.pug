@@ -1,7 +1,8 @@
 doctype html
 html
     head
-        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css")
+        link(href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css", rel="stylesheet")
+        link(href="/static/styles.css", rel="stylesheet")
         title #{pageTitle} | MyTUBE
         
     include ../partials/header
@@ -9,3 +10,4 @@ html
         main
             block content
     include ../partials/footer
+    script(src="/static/main.js")
