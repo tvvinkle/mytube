@@ -13,7 +13,6 @@ import { localsMiddleware } from "./middlewares";
 
 const app = express();
 
-
 app.use(helmet());
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
