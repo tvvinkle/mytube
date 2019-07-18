@@ -1,34 +1,35 @@
 header.header
-    .header__column
-        a(href=routes.home)
-            i.fab.fa-youtube
-            span MyTube
-    .header__column
-        form(action="/search", method="get")   
-            input(type="text", name="keyword", placeholder="Search")     
-    .header__column
-        ul
-            if user.isAuthenticated
-                li
-                    a(href=`/videos${routes.upload}`) Upload
-                li
-                    a(href="#") Youtube App
-                li
-                    a(href="#") Messages
-                li
-                    a(href="#") Notification
-                li
-                    a(href=routes.userDetail(user.id)) Profile
-                li
-                    a(href=routes.logout) Logout                    
-            else    
-                li
-                    a(href=`/videos${routes.upload}`) Upload
-                li
-                    a(href="#") Youtube App
-                li
-                    a(href="#") Message
-                li
-                    a(href=routes.join) Join In
-                li
-                    a(href=routes.login) Log In                   
+    .header__wrapper
+        .header__column
+            a(href=routes.home)
+                i.fab.fa-youtube
+                span MyTube
+        .header__column
+            form(action="/search", method="get")   
+                input(name="keyword", type="text", placeholder="Search")
+                button(type="submit") Search
+        .header__column
+            ul
+                if user.isAuthenticated
+                    li
+                        a(href=`/videos${routes.upload}`) <i class="fas fa-video"></i>
+                    li
+                        a(href="#") <i class="fas fa-th"></i>
+                    li
+                        a(href="#") <i class="fas fa-comment-dots"></i>
+                    li
+                        a(href="#") <i class="fas fa-bell"></i>
+                    li
+                        a(href=routes.userDetail(user.id)) <i class="fas fa-user-circle"></i>
+                    li
+                        a(href=routes.logout) <i class="fas fa-sign-out-alt"></i>                   
+                else    
+                    li
+                        a(href=`/videos${routes.upload}`) <i class="fas fa-video"></i> 
+                    li
+                        a(href="#") <i class="fas fa-th"></i>
+                    li
+                        a(href="#") <i class="fas fa-comment-dots"></i>
+                    li
+                        a(href=routes.join) <i class="fas fa-user-circle"> SING IN</i> 
+                

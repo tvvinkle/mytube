@@ -1,0 +1,75 @@
+.header {
+    width: 100%;
+    background-color: $red;
+
+    .header__wrapper {
+        padding: 5px 0px;
+        width: 100%;
+        margin: 0 auto;
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+
+        .header__column {
+            i {
+                color: white;
+                font-size: 20px;
+                margin: 10px 5px;
+            }
+
+            span {
+                color: white;
+                font-weight: 700;
+            }
+
+            &:first-child {
+                justify-self: start;
+
+            }
+
+            &:nth-child(2) {
+                width: 100%;
+                justify-self: center;
+            }
+
+            &:last-child {
+                justify-self: end;
+            }
+
+            ul {
+                display: flex;
+                color: white;
+                font-weight: 600;
+                text-transform: uppercase;
+
+                li:not(:last-child) {
+                    display: flex;
+                    margin-right: 10px;
+
+                    form {
+                        input {
+                            width: 80%;
+                            height: 30px;
+                            padding: 7px 10px;
+                            border: 1px solid grey;
+                            border-radius: 5px;
+                            font-size: 14px;
+                            color: $black;
+                            font-size: 15px;
+                            font-weight: 400;
+                            max-width: none;
+
+                            &::placeholder {
+                                font-weight: 300;
+                                color: rgba(0, 0, 0, 0.7);
+                            }
+
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

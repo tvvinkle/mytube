@@ -1,7 +1,6 @@
 extends layout/main
 
 block content
-    p Join
     div.form-container
         form(action=routes.join, method="post")
             input(name="name", type="text", placeholder="Full Name", require=true)
