@@ -1,3 +1,3 @@
 # MYTUBE
 
-Youtube clone with NodeJS, Express, Pug & MongoDB
+Youtube clone with NodeJS, Express, Pug, SCSS & MongoDB
