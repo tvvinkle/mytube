@@ -2,11 +2,32 @@ extends layout/main
 //- include mixins/video
 
 block content
-    p Video Detail
-    .video__player  
-        video(src=`/${theVideo.fileUrl}`)
-    .video__info
-        a(href=routes.videoEdit(theVideo.id)) Edit Video
-        h4.videoBlock__title=theVideo.title
-        h5.videoBlock__view=theVideo.views 
-        p.videoBlock__description=theVideo.description
+    .video-detail__container
+        .video__player  
+            video(src=`/${theVideo.fileUrl}`)
+        .video__info
+            a(href=routes.videoEdit(theVideo.id)) 
+                button Edit Video
+            h5.video__title=theVideo.title
+            p.video__description=theVideo.description
+            if theVideo.views === 1
+                span.video__views 1 view
+            else 
+                span.video__views #{theVideo.views} views
+            .video__author
+                |Uploaded by
+        .video__comments
+            if theVideo.comments.length === 1
+                span.video__comment-number
+                    span#jsCommentNumber 1
+                    |  comment
+            else
+                span.video__comment-number
+                    span#jsCommentNumber=theVideo.comments.length
+                    |  comments
+            form.add__comment#jsAddComment
+                input(type="text", placeholder="Add a comment")
+            ul.video__comments-list#jsCommentList
+                each comment in theVideo.comments.reverse()
+                    li
+                        span=comment.text
