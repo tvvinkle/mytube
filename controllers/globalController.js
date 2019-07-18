@@ -1,5 +1,8 @@
+import passport from "passport";
+
 import routes from "../routes";
 import Video from "../models/Video";
+import User from "../models/User";
 // import { videos } from "../db";
 
 export const home = async (req, res) => {
@@ -13,33 +16,34 @@ export const home = async (req, res) => {
 
 export const join = (req, res) => res.render("join", { pageTitle: "Join" });
 
-export const postJoin = (req, res) => {
+export const postJoin = async (req, res, next) => {
   const {
     body: { name, email, password, password2 }
   } = req;
-
   if (password !== password2) {
-    // req.flash("error", "Passwords don't match");
-    console.log("password no match");
-    res.status(400);
-    res.render("join", { pageTitle: "Join" });
-  } else if (name == "" || email == "" || password == "") {
-    // req.flash("error", "Please fill up the form");
-    console.log("empty field");
     res.status(400);
     res.render("join", { pageTitle: "Join" });
   } else {
-    // Regeister user & user log in
-    res.redirect(routes.home);
+    try {
+      const user = await User({
+        name,
+        email
+      });
+      await User.register(user, password);
+      next();
+    } catch (error) {
+      console.log(error);
+      res.redirect(routes.home);
+    }
   }
 };
 
 export const login = (req, res) => res.render("login", { pageTitle: "Login" });
 
-export const postLogin = (req, res) => {
-  // check the user info with db
-  res.redirect(routes.home);
-};
+export const postLogin = passport.authenticate("local", {
+  failureRedirect: routes.login,
+  successRedirect: routes.home
+});
 
 export const logout = (req, res) =>
   // logout process
