@@ -1,22 +1,26 @@
-//global
+// global
 const HOME = "/";
 const JOIN = "/join";
 const LOGIN = "/login";
 const LOGOUT = "/logout";
 const SEARCH = "/search";
 
-//user
+// user
 const USERS = "/users";
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PW = "/change-password";
 const USER_DETAIL = "/:id";
 
-//videos
+// videos
 const VIDEOS = "/videos";
 const UPLOAD = "/upload";
 const VIDEO_DETAIL = "/:id";
 const VIDEO_EDIT = "/:id/edit";
 const VIDEO_DELETE = "/:id/delete";
+
+// auth
+const GITHUB = "/auth/github";
+const GITHUB_CALLBACK = "/auth/github/callback";
 
 const routes = {
   home: HOME,
@@ -28,9 +32,8 @@ const routes = {
   userDetail: id => {
     if (id) {
       return `/users/${id}`;
-    } else {
-      return USER_DETAIL;
     }
+    return USER_DETAIL;
   },
   editProfile: EDIT_PROFILE,
   changePW: CHANGE_PW,
@@ -56,7 +59,9 @@ const routes = {
     } else {
       return VIDEO_DELETE;
     }
-  }
+  },
+  github: GITHUB,
+  githubCallBack: GITHUB_CALLBACK
 };
 
 export default routes;
