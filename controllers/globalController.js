@@ -17,6 +17,7 @@ export const home = async (req, res) => {
 export const join = (req, res) => res.render("join", { pageTitle: "Join" });
 
 export const postJoin = async (req, res, next) => {
+  console.log("PostJOIN");
   const {
     body: { name, email, password, password2 }
   } = req;
@@ -32,7 +33,7 @@ export const postJoin = async (req, res, next) => {
       await User.register(user, password);
       next();
     } catch (error) {
-      console.log(error);
+      console.log(`post join error: ${error}`);
       res.redirect(routes.home);
     }
   }
@@ -55,11 +56,11 @@ export const githubLoginCallBack = async (
 ) => {
   // console.log(accessToken, refreshToken, profile, cb);
   const {
-    _json: { id, avatar_url, name, email }
+    _json: { id, avatar_url: avatarUrl, name, email }
   } = profile;
   try {
     const user = await User.findOne({ email });
-    console.log(user);
+    console.log(`githubuser ${user}`);
     if (user) {
       user.githubId = id;
       user.save();
@@ -69,7 +70,7 @@ export const githubLoginCallBack = async (
       email,
       name,
       githubId: id,
-      avatarUrl: avatar_url
+      avatarUrl
     });
     return cb(null, newUser);
   } catch (e) {
