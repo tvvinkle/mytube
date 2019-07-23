@@ -1,3 +1,5 @@
+import { METHODS } from "http";
+
 // global
 const HOME = "/";
 const JOIN = "/join";
@@ -10,6 +12,7 @@ const USERS = "/users";
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PW = "/change-password";
 const USER_DETAIL = "/:id";
+const MYPAGE = "/myPage";
 
 // videos
 const VIDEOS = "/videos";
@@ -35,6 +38,7 @@ const routes = {
     }
     return USER_DETAIL;
   },
+  mypage: MYPAGE,
   editProfile: EDIT_PROFILE,
   changePW: CHANGE_PW,
   videos: VIDEOS,

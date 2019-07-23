@@ -12,6 +12,7 @@ import {
   githubLogin,
   postGithubLogIn
 } from "../controllers/globalController";
+import { myPage } from "../controllers/userController";
 import { onlyPublic } from "../middlewares";
 
 const globalRouter = express.Router();
@@ -27,10 +28,12 @@ globalRouter.post(routes.login, onlyPublic, postLogin);
 globalRouter.get(routes.logout, logout);
 globalRouter.get(routes.search, search);
 
+globalRouter.get(routes.mypage, myPage);
+
 globalRouter.get(routes.github, githubLogin);
 globalRouter.get(
   routes.githubCallBack,
-  passport.authenticate("github", { failureRedirect: routes.login }),
+  passport.authenticate("github", { failureRedirect: "/login" }),
   postGithubLogIn
 );
 
