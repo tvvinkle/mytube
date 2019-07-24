@@ -4,8 +4,13 @@ import routes from "../routes";
 export const users = (req, res) => res.render("users", { pageTitle: "Users" });
 
 export const myPage = async (req, res) => {
-  console.log(`mypage user: ${req.user}`);
-  res.render("userDetail", { pageTitle: "User Detail", user: req.user });
+  //   console.log(`mypage user: ${req.user}`);
+  try {
+    res.render("userDetail", { pageTitle: "User Detail", user: req.user });
+  } catch (e) {
+    console.log(`mypage error: ${e}`);
+    res.redirect(routes.home);
+  }
 };
 
 export const userDetail = async (req, res) => {
