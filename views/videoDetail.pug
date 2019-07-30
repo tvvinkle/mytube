@@ -1,13 +1,14 @@
 extends layout/main
-//- include mixins/video
+include mixins/videoPlayer
 
 block content
     .video-detail__container
         .video__player  
             video(src=`/${theVideo.fileUrl}`)
         .video__info
-            a(href=routes.videoEdit(theVideo.id)) 
-                button Edit Video
+            if loggedUser && theVideo.creator.id === loggedUser.id
+                a(href=routes.videoEdit(theVideo.id)) 
+                    button Edit Video
             h5.video__title=theVideo.title
             p.video__description=theVideo.description
             if theVideo.views === 1
@@ -15,7 +16,8 @@ block content
             else 
                 span.video__views #{theVideo.views} views
             .video__author
-                |Uploaded by
+                |Uploaded by 
+                a(href=routes.userDetail(theVideo.creator.id))=theVideo.creator.name
         .video__comments
             if theVideo.comments.length === 1
                 span.video__comment-number
