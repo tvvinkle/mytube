@@ -1,15 +1,23 @@
 extends layout/main
+include mixins/videoBlock
 
 block content
     .user-profile
         .user-profile__header 
             img.u-avatar(src=user.avatarUrl)
             h3.profile__username=user.name
-            h3.profile__email=user.email     
-        .user-profile__btns
-            a(href=`/users${routes.editProfile}`)
-                button ✏️ Edit Profile
-            a(href=`/users${routes.changePW}`)
-                button 🔒 Change Password
+            h3.profile__email=user.email
+        if loggedUser && loggedUser.id === user.id         
+            .user-profile__btns
+                a(href=`/users${routes.editProfile}`)
+                    button Edit Profile
+                a(href=`/users${routes.changePW}`)
+                    button Change Password
         .home-videos    
             h4 video list
+            each item in user.videos 
+                +videoBlock({
+                    id:item.id,
+                    title:item.title,
+                    videoFile:item.fileUrl
+                })

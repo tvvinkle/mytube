@@ -111,7 +111,7 @@ export const facebookLoginCallBack = async (
     });
     return cb(null, newUser);
   } catch (e) {
-    console.log(`github login error : ${e}`);
+    console.log(`facebookuser login error : ${e}`);
     return cb(e);
   }
 };
@@ -136,7 +136,7 @@ export const search = async (req, res) => {
       title: { $regex: searchingBy, $options: "i" } // i -> insensetive
     });
   } catch (e) {
-    console.log(e);
+    console.log(`search errror ${e}`);
     res.redirect(routes.home);
   }
   res.render("search", { pageTitle: "Search", searchingBy, videos });

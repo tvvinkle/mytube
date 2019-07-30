@@ -1,12 +1,12 @@
 extends layout/main
 
 block content
-    p Upload Vidoe
     div.form-container
         form(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
-            label(for="file") Video File 
-            input(type="file", id="file", name="videoFile", required=true, accept="video/*")
-            input(type="text", placeholder="Title", name="title", required=true)
+            div.fileUpload
+                label(for="file") Video File
+                input(id="file", name="videoFile", type="file", required=true, accept="video/*")
+            input(name="title", type="text", placeholder="Title", required=true)
             textarea(name="description", placeholder="Description", required=true)
             input(type="submit", value="Upload Video")
 

@@ -468,6 +468,18 @@ main {
     width: 100%;
     margin-bottom: 20px; }
 
+.home-videos {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(150px, 1fr));
+  grid-gap: 30px; }
+  .home-videos .videoBlock:first-child,
+  .home-videos .videoBlock:nth-child(2) {
+    grid-column: span 3; }
+  .home-videos .videoBlock:nth-child(3),
+  .home-videos .videoBlock:nth-child(4),
+  .home-videos .videoBlock:nth-child(5) {
+    grid-column: span 2; }
+
 .video-detail__container {
   display: -webkit-box;
   display: -webkit-flex;
@@ -486,8 +498,6 @@ main {
      -moz-box-align: center;
       -ms-flex-align: center;
           align-items: center; }
-  .video-detail__container .video__player {
-    right: 10%; }
   .video-detail__container .video__info {
     width: 100%;
     max-width: 850px;
@@ -571,7 +581,8 @@ main {
        -moz-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    margin-bottom: 18px; }
+    margin-bottom: 18px;
+    margin-bottom: 50px; }
     .user-profile .user-profile__header .profile__username {
       font-size: 18px;
       margin-top: 15px; }
@@ -592,6 +603,7 @@ main {
     -webkit-align-items: center;
        -moz-box-align: center;
         -ms-flex-align: center;
-            align-items: center; }
+            align-items: center;
+    margin-bottom: 50px; }
     .user-profile .user-profile__btns a:not(:last-child) {
       margin-bottom: 20px; }

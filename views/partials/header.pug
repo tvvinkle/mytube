@@ -10,7 +10,7 @@ header.header
                 button(type="submit") Search
         .header__column
             ul
-                if user
+                if loggedUser
                     li
                         a(href=`/videos${routes.upload}`) <i class="fas fa-video"></i>
                     li

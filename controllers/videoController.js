@@ -10,7 +10,10 @@ export const videoDetail = async (req, res) => {
     params: { id }
   } = req;
   try {
-    const theVideo = await Video.findById(id);
+    const theVideo = await Video.findById(id)
+      .populate("creator")
+      .populate("comments");
+    console.log(theVideo);
     res.render("videoDetail", { pageTitle: "Video Detail", theVideo });
   } catch (e) {
     res.redirect(routes.home);
@@ -23,7 +26,14 @@ export const videoEdit = async (req, res) => {
   } = req;
   try {
     const theVideo = await Video.findById(id);
-    res.render("videoEdit", { pageTitle: `Edit ${theVideo.title}`, theVideo });
+    if (String(theVideo.creator) !== req.user.id) {
+      throw Error();
+    } else {
+      res.render("videoEdit", {
+        pageTitle: `Edit ${theVideo.title}`,
+        theVideo
+      });
+    }
   } catch (e) {
     res.redirect(routes.home);
   }
@@ -48,12 +58,16 @@ export const videoDelete = async (req, res) => {
   } = req;
   try {
     const theVideo = await Video.findById(id);
-    res.render("videoDelete", {
-      pageTitle: `Delete ${theVideo.title}`,
-      theVideo
-    });
+    if (String(theVideo.creator) !== req.user.id) {
+      throw Error();
+    } else {
+      res.render("videoDelete", {
+        pageTitle: `Delete ${theVideo.title}`,
+        theVideo
+      });
+    }
   } catch (e) {
-    console.log(e);
+    console.log(`videoDelete error ${e}`);
     res.redirect(routes.home);
   }
 };
@@ -66,7 +80,7 @@ export const postVideoDelete = async (req, res) => {
     const theVideo = await Video.findOneAndRemove({ _id: id });
     res.redirect(routes.home);
   } catch (e) {
-    console.log(e);
+    console.log(`postDelete error ${e}`);
     res.redirect(routes.home);
   }
 };
@@ -83,10 +97,13 @@ export const postUpload = async (req, res) => {
     const newVideo = await Video.create({
       fileUrl: path,
       title,
-      description
+      description,
+      creator: req.user.id
     });
+    req.user.videos.push(newVideo.id);
+    req.user.save();
     res.redirect(routes.videoDetail(newVideo.id));
   } catch (e) {
-    console.log(e);
+    console.log(`vidoe Post error ${e}`);
   }
 };
